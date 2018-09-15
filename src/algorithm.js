@@ -1,34 +1,30 @@
-const calculateVolumes = (buildingHeights) => {
-    let filledVolumes = Array(buildingHeights.length).fill(0);
-    if (buildingHeights.length <= 2) {
-        return filledVolumes;
-    }
-    buildingHeights = buildingHeights.map(x => parseInt(x, 10));
-    let leftMaxIndex = 0;
-    let rightMaxIndex = buildingHeights.length - 1;
-    let leftMax = buildingHeights[ 0 ];
-    let rightMax = buildingHeights[ rightMaxIndex ];
-    while (leftMaxIndex < rightMaxIndex) {
-        if (leftMax < rightMax) {
-            leftMaxIndex++;
-            if (buildingHeights[ leftMaxIndex ] < leftMax) {
-                filledVolumes[leftMaxIndex] = (leftMax - buildingHeights[ leftMaxIndex ]);
+
+const API = 'http://optibus-interview.herokuapp.com/';
+
+async function buildDataset() {
+    let response = await fetch(API);
+    let data = await response.json();
+    let buckets = [];
+    let minStartTime = Math.min(...data.map(d => Date.parse(d.startTime)));
+    data.forEach(d => {
+        let index = Math.floor((Date.parse(d.startTime) - minStartTime) / 3600000);
+        let durationInHours = (Date.parse(d.endTime) - Date.parse(d.startTime)) / 3600000;
+        while (durationInHours >= 0) {
+            if (!buckets[ index ]) {
+                buckets[ index ] = { date: index, value: 1 };
+            } else {
+                buckets[ index ].value++;
             }
-            else {
-                leftMax = buildingHeights[ leftMaxIndex ];
-            }
+            durationInHours--;
+            index++
         }
-        else {
-            rightMaxIndex--;
-            if (buildingHeights[ rightMaxIndex ] < rightMax) {
-                filledVolumes[rightMaxIndex] = (rightMax - buildingHeights[ rightMaxIndex ]);
-            }
-            else {
-                rightMax = buildingHeights[ rightMaxIndex ];
-            }
-        }
+    });
+    for (let i = 0; i < buckets.length; i++) {
+        if (!buckets[ i ]) {
+            buckets[ i ] = {date: i, value: 0};
+        }    
     }
-    return filledVolumes;
+    return { dataset: buckets, minStartTime: minStartTime };
 }
 
-export default calculateVolumes;
+export default buildDataset;

@@ -3,16 +3,13 @@
 }
 
 .App-header {
-  background-color: #2e8b57;
+  background-color: grey;
   height: 170px;
   padding: 30px;
-  color: whitesmoke;
+  color: black;
+  border-bottom: 1px solid black;
 }
 
-input {
-  margin-left: 10px;
-  color: grey;
-}
 .App-title {
   font-size: 2em;
 }
@@ -21,19 +18,13 @@ input {
   font-size: large;
 }
 
-.invalid-input {
-  border: 4px solid red;
-}
 
-svg {
-  position: relative;
-  display: block;
+.chart-container {
+  background-color: cadetblue;
+  width: 850px;
   left: 50%;
+  position: relative;
   transform: translateX(-50%);
+  margin-top: 50px;
   border: 2px solid black;
-  width: 650px;
-  height: 270px;
-  background-image: url('../assets/rainysky.gif');
 }
-
-
