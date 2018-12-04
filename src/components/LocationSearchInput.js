@@ -16,6 +16,7 @@ class LocationSearchInput extends Component {
       };
      
       handleSelect = address => {
+        this.setState({ isGeocoding: true, address });
         geocodeByAddress(address)
           .then(results => getLatLng(results[0]))
           .then(latLng => console.log('Success', latLng))

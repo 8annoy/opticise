@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LocationSearchInput from './LocationSearchInput';
 import '../styles/App.css';
+import SearchBar from './SearchBar';
 
 class DeliveryForm extends Component {
     constructor(props) {

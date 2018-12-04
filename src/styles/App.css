@@ -43,3 +43,17 @@ h4 {
   margin-top: 50px;
   border: 1px solid black;
 }
+
+.autocomplete-dropdown-container {
+}
+
+.suggestion-item {
+  padding: 8px;
+  text-align: left;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.suggestion-item--active {
+  background-color: #fafafa;
+}
