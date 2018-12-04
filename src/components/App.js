@@ -1,25 +1,32 @@
-import React from 'react';
-import Histogram from './Histogram';
-import buildDataset from '../algorithm';
+import React, { Component } from 'react';
+import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import '../styles/App.css';
+import CurrentLocation from './Map';
 
-class App extends React.Component {
-  
+export class MapContainer extends Component {
   state = {
-    data: []
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
   };
 
-  componentDidMount() {
-    let context = this;
-    buildDataset().then(data => {
-      context.setState({
-        data: data
-      });
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
     });
-  }
-  
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
   render() {
-    const { data } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -28,12 +35,23 @@ class App extends React.Component {
         <div className="map-form">
           
         </div>
-        <div className="map-instance">
-
-        </div>
+        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+          <Marker onClick={this.onMarkerClick} name={'current location'} />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h4>{this.state.selectedPlace.name}</h4>
+            </div>
+          </InfoWindow>
+        </CurrentLocation>
       </div>
     );
   }
 }
 
-export default App;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyBnOC2cYnLyaaYXtnd_IEQWZLkqvg0tqoE'
+})(MapContainer);
