@@ -3,7 +3,7 @@
   background-color: rgb(42, 62, 128);
   height: 80px;
   padding: 30px;
-  color: rgb(206, 169, 5);
+  color: rgb(255, 191, 16);
   border-bottom: 1px solid black;
 }
 
@@ -24,19 +24,20 @@ h4 {
 
 .map-form {
   background-color: rgb(42, 62, 128);
-  width: calc(40vw - 20px);
-  height: 670px;
-  left: 15px;
-  top: 40px;
-  position: absolute;
+  width: calc(40vw - 120px);
+  height: 90%;
+  left: 30px;
+  top: -15px;
+  position: fixed;
   margin-top: 50px;
   border: 1px solid black;
+  z-index: 9999;
 }
 
 .map-instance {
   background-color: white;
   width: calc(60vw - 20px);
-  height: 670px;
+  height: 900px;
   right: 15px;
   top: 40px;
   position: absolute;

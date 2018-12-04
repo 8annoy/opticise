@@ -4,10 +4,9 @@ import ReactDOM from 'react-dom';
 const mapStyles = {
   map: {
     position: 'absolute',
-    width: 'calc(60vw - 20px)',
-    height: '670px',
+    width: '100%',
+    height: '100%',
     right: '15px',
-    top: '90px',
     border: '1px solid black'
   }
 };
@@ -67,7 +66,8 @@ export class CurrentLocation extends React.Component {
         {},
         {
           center: center,
-          zoom: zoom
+          zoom: zoom,
+          options: {mapTypeControl: false},
         }
       );
       // maps.Map() is constructor that instantiates the map
@@ -119,7 +119,7 @@ export class CurrentLocation extends React.Component {
 export default CurrentLocation;
 
 CurrentLocation.defaultProps = {
-  zoom: 14,
+  zoom: 16,
   initialCenter: {
     lat: 0,
     lng: 0
