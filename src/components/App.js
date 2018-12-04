@@ -30,8 +30,21 @@ export class MapContainer extends Component {
     }
   };
 
+  showRoute = response => {
+    this.setState(response);
+    console.log(this.state);
+  }
+
+  displayDirections = () => (
+    this.state.price ? 
+    <div>
+      price
+    </div> : ''
+  )
+
   render() {
     const { origLatLang, destLatLang } = this.state;
+    
     return (
       <div className="App">
         <div className="sidebar">
@@ -40,8 +53,10 @@ export class MapContainer extends Component {
             <div className="app-description">Public Transportation Deliveries</div>
             <DeliveryForm 
               origSelected={(origLatLang) => this.setState({origLatLang})} 
-              destSelected={(destLatLang) => this.setState({destLatLang})}/>
+              destSelected={(destLatLang) => this.setState({destLatLang})}
+              showRoute={this.showRoute}/>
           </div>
+          {this.displayDirections()}
         </div>
         <CurrentLocation centerAroundCurrentLocation 
             google={this.props.google} 

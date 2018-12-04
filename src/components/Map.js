@@ -95,7 +95,6 @@ export class CurrentLocation extends React.Component {
         points[i] && bounds.extend(points[i]);
       }
     map.fitBounds(bounds);
-
   }
 
   renderChildren() {

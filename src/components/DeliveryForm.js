@@ -10,6 +10,7 @@ class DeliveryForm extends Component {
     }
 
     submit = (event) => {
+        let props = this.props;
         event.preventDefault();
         const { origSelected, destSelected } = this.state;
         console.log({ origSelected, destSelected })
@@ -17,8 +18,11 @@ class DeliveryForm extends Component {
             origSelected, 
             destSelected
           })
-          .then(function (response) {
+          .then(response => {
             console.log(response);
+            response.json = () =>  ({price: '$5.99', pickup: '10:00', busRide: 'Bus 126 at 10:15', delivery: '14:00'});
+            const {price, pickup, busRide, delivery} = response.json();
+            props.showRoute({price, pickup, busRide, delivery});
           })
           .catch(function (error) {
             console.log(error);
