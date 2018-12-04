@@ -38,7 +38,6 @@ export class MapContainer extends Component {
           <div className="App-header">
             <div className="App-title">Deliverit</div>
             <div className="app-description">Public Transportation Deliveries</div>
-            <hr/>
             <DeliveryForm 
               origSelected={(origLatLang) => this.setState({origLatLang})} 
               destSelected={(destLatLang) => this.setState({destLatLang})}/>

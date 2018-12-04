@@ -16,7 +16,6 @@
 .App-header {
   background: linear-gradient(180deg, #7D4DE7 0%, #4C7DE0 67.99%, #27A0D9 100%);
   padding: 18px;
-  color: rgb(255, 191, 16);
 }
 
 .App-title {
@@ -35,6 +34,7 @@
   font-weight: 300;	
   line-height: 13px;
   text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .App-intro {
@@ -57,6 +57,10 @@ h4 {
 }
 
 .suggestion-item--active {
+  padding: 8px;
+  text-align: left;
+  background-color: #fff;
+  cursor: pointer;
   background-color: #fafafa;
 }
 
@@ -76,12 +80,14 @@ h4 {
   border-radius: 2px;	
   background-color: #FFFFFF;
   padding: 10px;
-  margin: 10px 0;
+  margin: 5px 0;
   width: 100%;
 }
 
 input {
-  border: none
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .button {	
@@ -94,11 +100,45 @@ input {
   font-weight: bold;	
   line-height: 15px;
   text-transform: uppercase;
-  margin: 10px 0;
+  margin: 5px 0;
   align-self: flex-end;
 }
 
 .delivery-form {
   display: flex;
   flex-direction: column;
+}
+
+.search-input-container {
+  position: relative;
+}
+
+.search-input,
+.search-input:focus,
+.search-input:active {
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+}
+
+.autocomplete-container {
+  position: absolute;
+  z-index: 1;
+  border-bottom: honeydew;
+  border-left: honeydew;
+  border-right: honeydew;
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 0 0 2px 2px;
+}
+
+.suggestion-item {
+  padding: 8px;
+  text-align: left;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.suggestion-item--active {
+  background-color: #fafafa;
 }

@@ -35,15 +35,14 @@ class LocationSearchInput extends Component {
             onSelect={this.handleSelect}
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              <div style={style}>
-                <input style={{width: "100%"}}
+              <div style={style} className="search-input-container" >
+                <input className="search-input"
                   {...getInputProps({
-                    placeholder,
-                    className: 'location-search-input',
+                    placeholder
                   })}
                 />
-                <div className="autocomplete-dropdown-container">
-                  {loading && <div>Loading...</div>}
+                <div className="autocomplete-container">
+                  {loading && <div className="suggestion-item">Loading...</div>}
                   {suggestions.map(suggestion => {
                     const className = suggestion.active
                       ? 'suggestion-item--active'
@@ -54,13 +53,15 @@ class LocationSearchInput extends Component {
                       : { backgroundColor: '#ffffff', cursor: 'pointer' };
                     return (
                       <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style,
-                        })}
-                      >
-                        <span>{suggestion.description}</span>
-                      </div>
+                      {...getSuggestionItemProps(suggestion, { className })}
+                    >
+                      <strong>
+                        {suggestion.formattedSuggestion.mainText}
+                      </strong>{' '}
+                      <small>
+                        {suggestion.formattedSuggestion.secondaryText}
+                      </small>
+                    </div>
                     );
                   })}
                 </div>
