@@ -90,7 +90,8 @@ input {
   box-shadow: none;
 }
 
-.button {	
+.button,
+.button:focus {	
   height: 30px;	
   width: 88px;	
   border-radius: 2px;	
@@ -101,7 +102,7 @@ input {
   line-height: 15px;
   text-transform: uppercase;
   margin: 5px 0;
-  align-self: flex-end;
+  outline: none;
 }
 
 .delivery-form {

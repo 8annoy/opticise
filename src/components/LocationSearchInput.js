@@ -21,7 +21,7 @@ class LocationSearchInput extends Component {
           .then(results => getLatLng(results[0]))
           .then(latLng => {
             console.log('Success', latLng);
-            this.props.onSelect(latLng);
+            this.props.onSelect({latLng, address});
           })
           .catch(error => console.error('Error', error));
       };
