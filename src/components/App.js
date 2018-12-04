@@ -50,7 +50,7 @@ export class MapContainer extends Component {
         <div className="sidebar">
           <div className="App-header">
             <div className="App-title">Deliverit</div>
-            <div className="app-description">Public Transportation Deliveries</div>
+            <div className="public-transportation">Public Transportation Deliveries</div>
             <DeliveryForm 
               origSelected={(origLatLang) => this.setState({origLatLang})} 
               destSelected={(destLatLang) => this.setState({destLatLang})}

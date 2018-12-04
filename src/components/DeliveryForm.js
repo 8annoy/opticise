@@ -55,13 +55,13 @@ class DeliveryForm extends Component {
             <form onSubmit={this.submit} className="delivery-form">
                 <div className="rectangle">
                     <span className="input-label">From:</span>
-                    <LocationSearchInput onSelect={this.origSelected} placeholder="Origin" 
+                    <LocationSearchInput onSelect={this.origSelected}
                         style={{flex: "1 1 auto"}}/>
                 </div>
 
                 <div className="rectangle">
                     <span className="input-label">To:</span>
-                    <LocationSearchInput onSelect={this.destSelected} placeholder="Destination" 
+                    <LocationSearchInput onSelect={this.destSelected}
                         style={{flex: "1 1 auto"}}/>
                 </div>
                 <div style={{alignSelf: "flex-end"}}>

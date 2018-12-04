@@ -27,14 +27,17 @@
   position: absolute;
   top: 10px;*/
 }
-
-.app-description {
+.public-transportation {	
+  height: 13px;	
+  width:300px;	
   color: #FFFFFF;	
+  font-family: "Helvetica Neue";	
   font-size: 11px;	
-  font-weight: 300;	
+  font-weight: 100;	
   line-height: 13px;
   text-transform: uppercase;
   margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 
 .App-intro {
