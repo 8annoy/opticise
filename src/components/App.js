@@ -3,6 +3,7 @@ import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import DeliveryForm from './DeliveryForm'
 import '../styles/App.css';
 import CurrentLocation from './Map';
+import DeliveryRoute from './DeliveryRoute';
 
 export class MapContainer extends Component {
   state = {
@@ -10,7 +11,8 @@ export class MapContainer extends Component {
     activeMarker: {},
     selectedPlace: {},
     origLatLang: {
-      lat: "", lng: ""
+      lat: 32.0803408,
+      lng: 34.780638700000054
     }
   };
 
@@ -43,7 +45,7 @@ export class MapContainer extends Component {
   )
 
   render() {
-    const { origLatLang, destLatLang } = this.state;
+    const { origLatLang, destLatLang, deliveryRoute } = this.state;
     
     return (
       <div className="App">
@@ -54,9 +56,10 @@ export class MapContainer extends Component {
             <DeliveryForm 
               origSelected={(origLatLang) => this.setState({origLatLang})} 
               destSelected={(destLatLang) => this.setState({destLatLang})}
-              showRoute={this.showRoute}/>
+              showRoute={this.showRoute}
+              onRoute={(deliveryRoute) => this.setState({deliveryRoute})}/>
           </div>
-          {this.displayDirections()}
+          {deliveryRoute || <DeliveryRoute {...{deliveryRoute}}/>}
         </div>
         <CurrentLocation centerAroundCurrentLocation 
             google={this.props.google} 
