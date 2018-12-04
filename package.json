@@ -20,5 +20,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://qwer.requestcatcher.com/"
+  "proxy": "https://xi9jhoqc6f.execute-api.us-east-1.amazonaws.com/default"
 }

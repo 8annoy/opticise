@@ -66,6 +66,8 @@ class DeliveryRoute extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            price: 5,
+            time: "10:00 - 14:20",
             origin: "Tel Aviv, Ben Yehuda 32",
             destination: "Haifa, Ben Yehuda 11",
             stages: [
@@ -80,13 +82,13 @@ class DeliveryRoute extends Component {
     }
 
     render() {
-        const { origin, destination, stages } = this.state;
+        const { origin, destination, stages, time, price } = this.state;
         return (
             <div style={s.main}>
                 <div style={s.top}>
-                    <span>5$</span>
+                    <span>{price}$</span>
                     <hr width="1" size="500"/>
-                    <span>10:00 - 14:20</span>
+                    <span>{time}</span>
                 </div>
                 <div style={s.location}>
                     <span style={{fontWeight:500, margin: "3px"}}>From:</span>

@@ -19,16 +19,23 @@ class DeliveryForm extends Component {
             return false;
         }
         console.log({ origSelected, destSelected })
-        Axios.post('/newDelivery', {  
+        Axios.post('/delivery', {  
                 origin: origSelected.address, 
                 destination: origSelected.address, 
                 customer_id: 100
+            },{responseType:'json'})
+            .then(response => JSON.parse(response.data.body))
+          .then(function (body) {
+            console.log(body);
+            let stages = [];
+            body.forEach(ride => {
+                stages.push( { type: "move", img: "walk" , desc: "Pickup at 10:00 (15min)"});
+                stages.push( { type: "stop", desc: "Tel aviv, Central station"});
             })
-          .then(function (response) {
-            console.log(response);
-            response.json = () =>  ({price: '$5.99', pickup: '10:00', busRide: 'Bus 126 at 10:15', delivery: '14:00'});
-            const {price, pickup, busRide, delivery} = response.json();
-            props.showRoute({price, pickup, busRide, delivery});
+            stages.pop();
+            //response.json = () =>  ({price: '$5.99', pickup: '10:00', busRide: 'Bus 126 at 10:15', delivery: '14:00'});
+            //const {price, pickup, busRide, delivery} = response.json();
+            //props.showRoute({price, pickup, busRide, delivery});
           })
           .catch(function (error) {
             console.log(error);
