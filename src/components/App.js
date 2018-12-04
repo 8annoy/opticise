@@ -31,6 +31,7 @@ export class MapContainer extends Component {
   };
 
   render() {
+    const { origLatLang, destLatLang } = this.state;
     return (
       <div className="App">
         <div className="map-form App-header">
@@ -43,8 +44,10 @@ export class MapContainer extends Component {
         </div>
         <CurrentLocation centerAroundCurrentLocation 
             google={this.props.google} 
-            currentLocation={this.state.origLatLang}>
-          <Marker onClick={this.onMarkerClick} name={'current location'} />
+            currentLocation={this.state.origLatLang}
+            points={[origLatLang, destLatLang]}>
+          <Marker onClick={this.onMarkerClick} name={'current location'} position={origLatLang} />
+          <Marker onClick={this.onMarkerClick} name={'current location'} position={destLatLang} />
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}

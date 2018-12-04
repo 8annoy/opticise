@@ -12,8 +12,10 @@ class DeliveryForm extends Component {
           const { origSelected, destSelected } = this.props;
         return (
           <form>
-              <LocationSearchInput onSelect={origSelected} placeholder="Origin"/>
-              <LocationSearchInput onSelect={destSelected} placeholder="Destination"/>
+              <LocationSearchInput onSelect={origSelected} placeholder="Origin" 
+                style={{padding: "10px", width: "100%"}}/>
+              <LocationSearchInput onSelect={destSelected} placeholder="Destination" 
+                style={{padding: "10px", width: "100%"}}/>
           </form>
         );
       }

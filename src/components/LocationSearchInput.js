@@ -27,7 +27,7 @@ class LocationSearchInput extends Component {
       };
      
       render() {
-        const {placeholder} = this.props;
+        const {placeholder, style} = this.props;
         return (
           <PlacesAutocomplete
             value={this.state.address}
@@ -35,8 +35,8 @@ class LocationSearchInput extends Component {
             onSelect={this.handleSelect}
           >
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-              <div>
-                <input
+              <div style={style}>
+                <input style={{width: "100%"}}
                   {...getInputProps({
                     placeholder,
                     className: 'location-search-input',

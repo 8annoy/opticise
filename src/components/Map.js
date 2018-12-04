@@ -43,9 +43,22 @@ export class CurrentLocation extends React.Component {
     if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
-    if (prevProps.currentLocation !== this.props.currentLocation) {
+    /*if (prevProps.currentLocation !== this.props.currentLocation) {
+      this.recenterMap();
+    }*/
+
+    if (prevProps.points !== this.props.points) {
       this.recenterMap();
     }
+  }
+
+  setBounds() {
+    const {points} = this.props;
+    var bounds = new this.props.google.maps.LatLngBounds();
+    for (var i = 0; i < points.length; i++) {
+      points[i] && bounds.extend(points[i]);
+    }
+    this.setState({bounds})
   }
 
   loadMap() {
@@ -77,29 +90,25 @@ export class CurrentLocation extends React.Component {
 
   recenterMap() {
     const map = this.map;
-    const current = this.props.currentLocation;
+    const {points} = this.props;
+      var bounds = new this.props.google.maps.LatLngBounds();
+      for (var i = 0; i < points.length; i++) {
+        points[i] && bounds.extend(points[i]);
+      }
+    map.fitBounds(bounds);
 
-    const google = this.props.google;
-    const maps = google.maps;
-
-    if (map) {
-      let center = new maps.LatLng(current.lat, current.lng);
-      map.panTo(center);
-    }
   }
 
   renderChildren() {
     const { children } = this.props;
 
-    if (!children) return;
-
     return React.Children.map(children, c => {
       if (!c) return;
-      return React.cloneElement(c, {
+      return React.cloneElement(c, Object.assign({
         map: this.map,
         google: this.props.google,
         mapCenter: this.props.currentLocation
-      });
+      }))
     });
   }
 
