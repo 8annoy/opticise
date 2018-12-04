@@ -43,7 +43,7 @@ export class CurrentLocation extends React.Component {
     if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
-    if (prevState.currentLocation !== this.state.currentLocation) {
+    if (prevProps.currentLocation !== this.props.currentLocation) {
       this.recenterMap();
     }
   }
@@ -60,7 +60,7 @@ export class CurrentLocation extends React.Component {
       const node = ReactDOM.findDOMNode(mapRef);
 
       let { zoom } = this.props;
-      const { lat, lng } = this.state.currentLocation;
+      const { lat, lng } = this.props.currentLocation;
       const center = new maps.LatLng(lat, lng);
       const mapConfig = Object.assign(
         {},
@@ -77,7 +77,7 @@ export class CurrentLocation extends React.Component {
 
   recenterMap() {
     const map = this.map;
-    const current = this.state.currentLocation;
+    const current = this.props.currentLocation;
 
     const google = this.props.google;
     const maps = google.maps;
@@ -98,7 +98,7 @@ export class CurrentLocation extends React.Component {
       return React.cloneElement(c, {
         map: this.map,
         google: this.props.google,
-        mapCenter: this.state.currentLocation
+        mapCenter: this.props.currentLocation
       });
     });
   }

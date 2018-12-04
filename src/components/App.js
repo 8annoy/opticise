@@ -8,7 +8,10 @@ export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
+    selectedPlace: {},
+    origLatLang: {
+      lat: "", lng: ""
+    }
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -34,9 +37,13 @@ export class MapContainer extends Component {
           <h1 className="App-title">Deliverit</h1>
           <h4>Public Transportation Deliveries</h4>
           <hr/>
-          <DeliveryForm />
+          <DeliveryForm 
+            origSelected={(origLatLang) => this.setState({origLatLang})} 
+            destSelected={(destLatLang) => this.setState({destLatLang})}/>
         </div>
-        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+        <CurrentLocation centerAroundCurrentLocation 
+            google={this.props.google} 
+            currentLocation={this.state.origLatLang}>
           <Marker onClick={this.onMarkerClick} name={'current location'} />
           <InfoWindow
             marker={this.state.activeMarker}
