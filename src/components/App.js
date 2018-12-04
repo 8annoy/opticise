@@ -30,10 +30,10 @@ export class MapContainer extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <span><h1 className="App-title">Deliverit | </h1><h4>Public Transportation Deliveries</h4></span>
-        </header>
-        <div className="map-form">
+        <div className="map-form App-header">
+          <h1 className="App-title">Deliverit</h1>
+          <h4>Public Transportation Deliveries</h4>
+          <hr/>
           <DeliveryForm />
         </div>
         <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
