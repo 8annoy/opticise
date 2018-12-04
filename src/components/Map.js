@@ -79,7 +79,7 @@ export class CurrentLocation extends React.Component {
         {
           center: center,
           zoom: zoom,
-          options: {mapTypeControl: false},
+          options: {mapTypeControl: false, fullscreenControl: false, streetViewControl: false},
         }
       );
       // maps.Map() is constructor that instantiates the map
