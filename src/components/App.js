@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import DeliveryForm from './DeliveryForm'
 import '../styles/App.css';
 import CurrentLocation from './Map';
 
@@ -33,7 +34,7 @@ export class MapContainer extends Component {
           <span><h1 className="App-title">Deliverit | </h1><h4>Public Transportation Deliveries</h4></span>
         </header>
         <div className="map-form">
-          
+          <DeliveryForm />
         </div>
         <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
           <Marker onClick={this.onMarkerClick} name={'current location'} />

@@ -18,6 +18,24 @@ const isLocalhost = Boolean(
     )
 );
 
+window.GoogleSamples = window.GoogleSamples || {};
+window.GoogleSamples.Config = window.GoogleSamples.Config || {
+  gcmAPIKey: 'AAAAgZHxIaM:APA91bHqK3J3DY1llO0YPLrC5sFmx2WufklDojhCplqmVAwih1YBkKQ14t3IU_AlrXQeTMuJJ-RibOG-fIGQQs9JWR6yMoQLQn5o8ubAK2heOg_FPP8G_kjVwOdJ8d4Gx0Ju7TLjiLAV'
+  //'<Your Cloud Messaging API Key from https://console.firebase.google.com>'
+};
+
+const msgManifest = {
+  "name": "Push Demo",
+  "short_name": "Push Demo",
+  "icons": [{
+        "src": "images/icon-192x192.png",
+        "sizes": "192x192"
+      }],
+  "start_url": "./index.html?homescreen=1",
+  "display": "standalone",
+  "gcm_sender_id": "556499280291"
+}
+
 export default function register() {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
