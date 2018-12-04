@@ -12,7 +12,7 @@ class DeliveryForm extends Component {
     submit = (event) => {
         event.preventDefault();
         const { origSelected, destSelected } = this.state;
-console.log({ origSelected, destSelected })
+        console.log({ origSelected, destSelected })
         Axios.post('/newDelivery', {
             origSelected, 
             destSelected
