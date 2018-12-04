@@ -23,13 +23,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Guess what, it's a Chart :-)</h1>
-          <p className="App-intro">
-            Take a look at this simple histogram, depicting the amount of active transports per hour.
-          </p>
+          <h1 className="App-title">Optibus Delivery</h1>
         </header>
-        <div className="chart-container">
-          <Histogram  data={data}></Histogram>
+        <div className="map-form">
+          
+        </div>
+        <div className="map-instance">
+
         </div>
       </div>
     );

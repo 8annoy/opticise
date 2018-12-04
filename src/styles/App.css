@@ -1,10 +1,7 @@
-.App {
-  text-align: center;
-}
 
 .App-header {
-  background-color: grey;
-  height: 170px;
+  background-color: rgb(42, 62, 128);
+  height: 80px;
   padding: 30px;
   color: black;
   border-bottom: 1px solid black;
@@ -12,6 +9,8 @@
 
 .App-title {
   font-size: 2em;
+  position: absolute;
+  top: 10px;
 }
 
 .App-intro {
@@ -19,12 +18,24 @@
 }
 
 
-.chart-container {
-  background-color: cadetblue;
-  width: 850px;
-  left: 50%;
-  position: relative;
-  transform: translateX(-50%);
+.map-form {
+  background-color: rgb(100, 159, 207);
+  width: 450px;
+  height: 670px;
+  left: 15px;
+  top: 40px;
+  position: absolute;
   margin-top: 50px;
-  border: 2px solid black;
+  border: 1px solid black;
+}
+
+.map-instance {
+  background-color: white;
+  width: 950px;
+  height: 670px;
+  right: 15px;
+  top: 40px;
+  position: absolute;
+  margin-top: 50px;
+  border: 1px solid black;
 }
