@@ -25,20 +25,20 @@ class DeliveryForm extends Component {
                 customer_id: 100
             },{responseType:'json'})
             .then(response => JSON.parse(response.data.body))
-          .then(function (body) {
-            console.log(body);
+          .then(body => {
+            console.log("Axios body", body);
             let stages = [];
             body.forEach(ride => {
-                stages.push( { type: "move", img: "walk" , desc: "Pickup at 10:00 (15min)"});
+                stages.push( { type: "move", img: "walk" , desc: `${ride.travel_mode} at ()`});
                 stages.push( { type: "stop", desc: "Tel aviv, Central station"});
             })
             stages.pop();
             //response.json = () =>  ({price: '$5.99', pickup: '10:00', busRide: 'Bus 126 at 10:15', delivery: '14:00'});
             //const {price, pickup, busRide, delivery} = response.json();
-            //props.showRoute({price, pickup, busRide, delivery});
+            this.props.showRoute(body);
           })
           .catch(function (error) {
-            console.log(error);
+            console.log("Axios error", error);
           });
           this.setState({error: false})
         return false;

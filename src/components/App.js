@@ -32,9 +32,9 @@ export class MapContainer extends Component {
     }
   };
 
-  showRoute = response => {
-    this.setState(response);
-    console.log(this.state);
+  showRoute = deliveryRoute => {
+    this.setState({deliveryRoute});
+    console.log("showRoute",deliveryRoute);
   }
 
   displayDirections = () => (
@@ -59,7 +59,7 @@ export class MapContainer extends Component {
               showRoute={this.showRoute}
               onRoute={(deliveryRoute) => this.setState({deliveryRoute})}/>
           </div>
-          {deliveryRoute || <DeliveryRoute {...{deliveryRoute}}/>}
+          {deliveryRoute && <DeliveryRoute {...{deliveryRoute}}/>}
         </div>
         <CurrentLocation centerAroundCurrentLocation 
             google={this.props.google} 
