@@ -23,7 +23,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Optibus Delivery</h1>
+          <span><h1 className="App-title">Deliverit | </h1><h4>Public Transportation Deliveries</h4></span>
         </header>
         <div className="map-form">
           
