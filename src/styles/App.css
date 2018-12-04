@@ -18,16 +18,16 @@
 }
 
 h4 {
-  margin-left: 120px;
   color: darkgrey;
+  margin-top: 10px;
 }
 
 .map-form {
   background-color: rgb(42, 62, 128);
-  width: calc(40vw - 120px);
-  height: 90%;
-  left: 30px;
-  top: -15px;
+  width: calc(40vw - 160px);
+  height: 100%;
+  left: 0;
+  top: -50px;
   position: fixed;
   margin-top: 50px;
   border: 1px solid black;

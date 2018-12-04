@@ -35,7 +35,7 @@ export class MapContainer extends Component {
     return (
       <div className="App">
         <div className="map-form App-header">
-          <h1 className="App-title">Deliverit</h1>
+          <h1 className="App-title">Deliverit</h1><br/>
           <h4>Public Transportation Deliveries</h4>
           <hr/>
           <DeliveryForm 
