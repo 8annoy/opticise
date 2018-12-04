@@ -1,16 +1,40 @@
 
+
+.sidebar {
+  background-color: #FFFFFF;
+  width: 320px;
+  height: 100%;
+  left: 0;
+  top: -50px;
+  position: fixed;
+  margin-top: 50px;
+  z-index: 9999;
+  box-shadow: 4px 0 15px 0 rgba(0,0,0,0.25);
+  font-family: "Helvetica Neue";
+}
+
 .App-header {
-  background-color: rgb(42, 62, 128);
-  height: 80px;
-  padding: 30px;
+  background: linear-gradient(180deg, #7D4DE7 0%, #4C7DE0 67.99%, #27A0D9 100%);
+  padding: 18px;
   color: rgb(255, 191, 16);
-  border-bottom: 1px solid black;
 }
 
 .App-title {
-  font-size: 2em;
+  color: #FFFFFF;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 29px;
+  /*font-size: 2em;
   position: absolute;
-  top: 10px;
+  top: 10px;*/
+}
+
+.app-description {
+  color: #FFFFFF;	
+  font-size: 11px;	
+  font-weight: 300;	
+  line-height: 13px;
+  text-transform: uppercase;
 }
 
 .App-intro {
@@ -20,18 +44,6 @@
 h4 {
   color: darkgrey;
   margin-top: 10px;
-}
-
-.map-form {
-  background-color: rgb(42, 62, 128);
-  width: 320px;
-  height: 100%;
-  left: 0;
-  top: -50px;
-  position: fixed;
-  margin-top: 50px;
-  z-index: 9999;
-  box-shadow: 4px 0 15px 0 rgba(0,0,0,0.25);
 }
 
 .autocomplete-dropdown-container {
@@ -46,4 +58,47 @@ h4 {
 
 .suggestion-item--active {
   background-color: #fafafa;
+}
+
+.input-label {
+  color: #998BFF;	
+  font-size: 11px;	
+  line-height: 12px;
+  text-transform: uppercase;
+  width: 20%;
+}
+
+.rectangle {
+  display: flex;
+  align-items: center;
+  height: 29px;	
+  width: 284px;	
+  border-radius: 2px;	
+  background-color: #FFFFFF;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+input {
+  border: none
+}
+
+.button {	
+  height: 30px;	
+  width: 88px;	
+  border-radius: 2px;	
+  background-color: #FFB249;
+  color: #FFFFFF;	
+  font-size: 12px;	
+  font-weight: bold;	
+  line-height: 15px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  align-self: flex-end;
+}
+
+.delivery-form {
+  display: flex;
+  flex-direction: column;
 }

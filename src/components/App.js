@@ -34,13 +34,15 @@ export class MapContainer extends Component {
     const { origLatLang, destLatLang } = this.state;
     return (
       <div className="App">
-        <div className="map-form App-header">
-          <h1 className="App-title">Deliverit</h1><br/>
-          <h4>Public Transportation Deliveries</h4>
-          <hr/>
-          <DeliveryForm 
-            origSelected={(origLatLang) => this.setState({origLatLang})} 
-            destSelected={(destLatLang) => this.setState({destLatLang})}/>
+        <div className="sidebar">
+          <div className="App-header">
+            <div className="App-title">Deliverit</div>
+            <div className="app-description">Public Transportation Deliveries</div>
+            <hr/>
+            <DeliveryForm 
+              origSelected={(origLatLang) => this.setState({origLatLang})} 
+              destSelected={(destLatLang) => this.setState({destLatLang})}/>
+          </div>
         </div>
         <CurrentLocation centerAroundCurrentLocation 
             google={this.props.google} 

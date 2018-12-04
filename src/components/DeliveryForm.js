@@ -41,12 +41,19 @@ class DeliveryForm extends Component {
     render() {
         //const { origSelected, destSelected } = this.props;
         return (
-            <form onSubmit={this.submit}>
-                <LocationSearchInput onSelect={this.origSelected} placeholder="Origin" 
-                    style={{padding: "10px", width: "100%"}}/>
-                <LocationSearchInput onSelect={this.destSelected} placeholder="Destination" 
-                    style={{padding: "10px", width: "100%"}}/>
-                <button type="submit"></button>
+            <form onSubmit={this.submit} className="delivery-form">
+                <div className="rectangle">
+                    <span className="input-label">From:</span>
+                    <LocationSearchInput onSelect={this.origSelected} placeholder="Origin" 
+                        style={{flex: "1 1 auto"}}/>
+                </div>
+
+                <div className="rectangle">
+                    <span className="input-label">To:</span>
+                    <LocationSearchInput onSelect={this.destSelected} placeholder="Destination" 
+                        style={{flex: "1 1 auto"}}/>
+                </div>
+                <button type="submit" className="button">Deliverit</button>
             </form>
             );
         }
