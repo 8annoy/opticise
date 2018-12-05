@@ -39,7 +39,7 @@ export class CurrentLocation extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.google !== this.props.google) {
+    if (this.props.showRoute || prevProps.google !== this.props.google) {
       this.loadMap();
     }
     /*if (prevProps.currentLocation !== this.props.currentLocation) {
@@ -49,6 +49,7 @@ export class CurrentLocation extends React.Component {
     if (prevProps.points !== this.props.points) {
       this.recenterMap();
     }
+      
   }
 
   setBounds() {
@@ -57,7 +58,9 @@ export class CurrentLocation extends React.Component {
     for (var i = 0; i < points.length; i++) {
       points[i] && bounds.extend(points[i]);
     }
-    this.setState({bounds})
+    if(points.length > 1) {
+        this.setState({bounds})
+    }
   }
 
   loadMap() {
@@ -84,7 +87,26 @@ export class CurrentLocation extends React.Component {
       );
       // maps.Map() is constructor that instantiates the map
       this.map = new maps.Map(node, mapConfig);
+      if(this.props.showRoute) {
+        let directionsDisplay = new this.props.google.maps.DirectionsRenderer;
+        let directionsService = new this.props.google.maps.DirectionsService;
+        directionsDisplay.setMap(this.map);
+        this.calculateAndDisplayRoute(directionsService, directionsDisplay);
+      }
     }
+  }
+
+  calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    var selectedMode = 'TRANSIT';
+    directionsService.route({
+      destination: {lat: 31.263125, lng: 34.802251},
+      origin: {lat: 32.063835, lng: 34.780025},  
+      travelMode: this.props.google.maps.TravelMode[selectedMode]
+    }, function(response, status) {
+      if (status == 'OK') {
+        directionsDisplay.setDirections(response);
+      }
+    });
   }
 
   recenterMap() {
@@ -127,10 +149,7 @@ export default CurrentLocation;
 
 CurrentLocation.defaultProps = {
   zoom: 16,
-initialCenter: {
-  lat: 32.0803408,
-  lng: 34.780638700000054
-},
+  initialCenter:  {lat: 32.063835, lng: 34.780025},
   centerAroundCurrentLocation: false,
   visible: true
 };

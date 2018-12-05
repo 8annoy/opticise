@@ -68,13 +68,14 @@ class DeliveryRoute extends Component {
         this.state = {
             price: 5,
             time: "10:00 - 14:20",
-            origin: "Tel Aviv, Ben Yehuda 32",
-            destination: "Haifa, Ben Yehuda 11",
+            origin: "Menachem Begin Road 23, Tel Aviv-Yafo, Israel",
+            destination: "Ben Gurion University of the Negev, שד' בן-גוריון, Be'er Sheva, Israel",
             stages: [
                 { type: "move", img: BikeImg , desc: "Pickup at 10:00 (15min)"},
-                { type: "stop", desc: "Tel aviv, Central station"},
-                { type: "move", img: BusImg , desc: "Bus 980 to haifa at 12:10, (1:23 h)"},
-                { type: "stop", desc: "Haifa, Central station"},
+                { type: "stop", desc: "Begin Road/HaRakevet"},
+                { type: "move", img: BusImg , desc: "Bus 268 at 12:08, (22 minutes)"},
+                { type: "stop", desc: "Geha Interchange/Road 4"},
+                { type: "move", img: BusImg, desc: "Bus 669 at 12:43, (1 hour, 16 minutes)" },
                 { type: "move", img: BikeImg , desc: "Delivery out 14:00 (20min)"},
 
             ]
