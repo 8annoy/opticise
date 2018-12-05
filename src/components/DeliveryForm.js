@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import LocationSearchInput from './LocationSearchInput';
+import { ClipLoader } from 'react-spinners';
 import '../styles/App.css';
 import ErrorImg from '../images/orange-error-icon.png'
 import Axios from 'axios';
@@ -18,6 +19,7 @@ class DeliveryForm extends Component {
             this.setState({error: true})
             return false;
         }
+        this.setState({loading: true, error: false})
         console.log({ origSelected, destSelected })
         Axios.post('/delivery', {  
                 origin: origSelected.address, 
@@ -36,11 +38,12 @@ class DeliveryForm extends Component {
             //response.json = () =>  ({price: '$5.99', pickup: '10:00', busRide: 'Bus 126 at 10:15', delivery: '14:00'});
             //const {price, pickup, busRide, delivery} = response.json();
             this.props.showRoute(body);
+
+            this.setState({loading: false})
           })
           .catch(function (error) {
             console.log("Axios error", error);
           });
-          this.setState({error: false})
         return false;
     }
     
@@ -73,7 +76,18 @@ class DeliveryForm extends Component {
                 </div>
                 <div style={{alignSelf: "flex-end"}}>
                     {this.state.error && <img style={{height: "18px", margin: "5px"}} src={ErrorImg}/>}
+                    {this.state.loading ? 
+                    <div className='sweet-loading'>
+                        <ClipLoader
+                        className={"asd"}
+                        sizeUnit={"px"}
+                        size={20}
+                        color={'#123abc'}
+                        loading={this.state.loading}
+                        />
+                    </div> :
                     <button type="submit" className="button">Deliverit</button>
+                    }
                 </div>
             </form>
             );
